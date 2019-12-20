@@ -208,6 +208,21 @@
                 </materialDesign:Card>
             </TabItem>
 
+            <TabItem Header="Add">
+                <materialDesign:Card Padding="10" Margin="5">
+
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="User:" Margin="10" VerticalAlignment="Center"/>
+                            <TextBox Text="{Binding ForAddUser.Name}" materialDesign:HintAssist.Hint="name"  materialDesign:HintAssist.IsFloating="True" Margin="10" MinWidth="150"/>
+                            <TextBox Text="{Binding ForAddUser.Adres}" materialDesign:HintAssist.Hint="address"  materialDesign:HintAssist.IsFloating="True" Margin="10" MinWidth="200"/>
+                            <TextBox Text="{Binding ForAddUser.Phone}" materialDesign:HintAssist.Hint="phone"  materialDesign:HintAssist.IsFloating="True" Margin="10" MinWidth="200"/>
+                            <Button Content="add" Margin="10" Command="{Binding AddUserCommand}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </TabItem>
+            
         </TabControl>
       
     </Grid>
