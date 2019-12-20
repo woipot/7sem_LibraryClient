@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LibraryClient"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mvvm="clr-namespace:LibraryClient.mvvm"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -14,9 +15,200 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <mvvm:MainViewModel/>
+    </Window.DataContext>
+
     <Grid>
-        <materialDesign:Card Padding="32" Margin="16">
+        <TabControl>
+            <TabItem Header="books">
+                <materialDesign:Card Padding="32" Margin="16">
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                            <materialDesign:Card Grid.Column="0" Padding="5" Margin="5">
+                                <TextBlock  Text="id" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                            <materialDesign:Card Grid.Column="1" Padding="5" Margin="5">
+                                <TextBlock Text="name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                            <materialDesign:Card Grid.Column="2" Padding="5" Margin="5">
+                                <TextBlock Text="Total count" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+
+                            <materialDesign:Card Grid.Column="3" Padding="5" Margin="5">
+                                <TextBlock Text="count" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+
+                            <materialDesign:Card Grid.Column="4" Padding="5" Margin="5">
+                                <TextBlock Text="price" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                        </Grid>
+                        
+                        <ListView Grid.Row="1" ItemsSource="{Binding Books}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                               <materialDesign:Card Padding="5" Margin="5">
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Path=IdBook}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Path=TotalCount}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Path=Count}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding Path=Price}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    </Grid>
+                </materialDesign:Card>
+            </TabItem>
             
-        </materialDesign:Card>
+            
+            <TabItem Header="orders" >
+                <materialDesign:Card Padding="32" Margin="16">
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:Card Grid.Column="0" Padding="5" Margin="5">
+                                <TextBlock  Text="id" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                            <materialDesign:Card Grid.Column="1" Padding="5" Margin="5">
+                                <TextBlock Text="start" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                            <materialDesign:Card Grid.Column="2" Padding="5" Margin="5">
+                                <TextBlock Text="end" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+
+                        </Grid>
+                        <ListView Grid.Row="1" ItemsSource="{Binding Orders}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <materialDesign:Card Padding="5" Margin="5">
+                                        <Grid Margin="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Path=IdOrder}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=OrderStart}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="2" Text="{Binding Path=OrderEnd}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </materialDesign:Card>
+            </TabItem>
+            
+            
+            <TabItem Header="Users" >
+                <materialDesign:Card Padding="32" Margin="16">
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:Card Grid.Column="0" Padding="5" Margin="5">
+                                <TextBlock  Text="id" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                            <materialDesign:Card Grid.Column="1" Padding="5" Margin="5">
+                                <TextBlock Text="name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                            <materialDesign:Card Grid.Column="2" Padding="5" Margin="5">
+                                <TextBlock Text="Phone" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+
+                            <materialDesign:Card Grid.Column="3" Padding="5" Margin="5">
+                                <TextBlock Text="Address" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+
+                            <materialDesign:Card Grid.Column="4" Padding="5" Margin="5">
+                                <TextBlock Text="orders count" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </materialDesign:Card>
+                        </Grid>
+                        <ListView Grid.Row="1" ItemsSource="{Binding Users}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <materialDesign:Card Padding="5" Margin="5">
+                                        <Grid Margin="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Path=IdUser}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="2" Text="{Binding Path=Phone}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="3" Text="{Binding Path=Adres}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Grid.Column="4" Text="{Binding Path=UserHasOrders.Count}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </materialDesign:Card>
+            </TabItem>
+
+        </TabControl>
+      
     </Grid>
 </Window>

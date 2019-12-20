@@ -302,6 +302,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="mvvm\MainViewModel.cs" />
     <Compile Include="mydbContext.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserHasOrders.cs" />
@@ -354,6 +355,9 @@
     <Resource Include="FodyWeavers.xml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="mvvm\models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.0.0\build\MaterialDesignThemes.targets')" />
