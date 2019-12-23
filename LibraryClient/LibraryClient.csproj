@@ -309,6 +309,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddOrederResult.cs" />
     <Compile Include="mvvm\MainViewModel.cs" />
     <Compile Include="mydbContext.cs" />
     <Compile Include="User.cs" />

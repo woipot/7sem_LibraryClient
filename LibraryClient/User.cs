@@ -8,6 +8,10 @@ namespace LibraryClient
         public User()
         {
             UserHasOrders = new HashSet<UserHasOrders>();
+
+            Name = " ";
+            Phone = " ";
+            Adres = " ";
         }
 
         public int IdUser { get; set; }
